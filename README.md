@@ -31,7 +31,8 @@ This project is a flashcard study app built for the TripleTen Software Engineeri
 - GitHub Pages
 
 ## Project Pitch Video
-(Paste your video link here)
+
+Check out [this video](https://drive.google.com/file/d/1QTUS0uZ4y7_Kd5OyOitLihWNVRDTzSS4/view?usp=sharing), where I describe my project and some challenges I faced while building it.
 
 ## Author
 Dorothy Mawi
