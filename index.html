@@ -25,8 +25,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="./assets/vendor/normalize.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
   </head>
 
   <body class="page">
@@ -56,6 +55,20 @@
         </div>
       </section>
 
+      <section class="deck-view" id="deck-view">
+        <h2 class="deck-view__title"></h2>
+
+        <div class="deck-view__cards">
+          <ul class="deck-view__list"></ul>
+
+          <button class="deck-view__new-card-btn" type="button">
+            + New Card
+          </button>
+
+          <a class="deck-view__practice-btn" href="#">Practice</a>
+        </div>
+      </section>
+
       <section class="not-found" id="not-found">
         <h2 class="not-found__title">404 Not Found</h2>
         <p class="not-found__text">Page not found.</p>
@@ -64,7 +77,7 @@
       <section class="carousel" id="carousel">
         <h2 class="carousel__title"></h2>
 
-        <div class="carousel__content">
+        <div class="carousel__grid">
           <button
             class="carousel__btn carousel__btn_type_left"
             type="button"
@@ -80,13 +93,13 @@
             type="button"
             aria-label="Next card"
           ></button>
-        </div>
 
-        <button
-          class="carousel__btn carousel__btn_type_flip"
-          type="button"
-          aria-label="Flip card"
-        ></button>
+          <button
+            class="carousel__btn carousel__btn_type_flip"
+            type="button"
+            aria-label="Flip card"
+          ></button>
+        </div>
       </section>
     </main>
 
@@ -106,6 +119,26 @@
             class="deck__delete-btn"
             type="button"
             aria-label="Delete this deck"
+          ></button>
+        </div>
+      </li>
+    </template>
+
+    <template id="card-template">
+      <li class="card">
+        <p class="card__text"></p>
+
+        <div class="card__buttons">
+          <button
+            class="card__flip-btn"
+            type="button"
+            aria-label="Flip card"
+          ></button>
+
+          <button
+            class="card__delete-btn"
+            type="button"
+            aria-label="Delete this card"
           ></button>
         </div>
       </li>
