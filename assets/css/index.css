@@ -71,11 +71,21 @@
   flex-direction: column;
 }
 
+.deck-view {
+  display: none;
+}
+
 .decks__title,
 .deck-view__title {
   margin: 0 0 40px;
   font-weight: 700;
   font-size: 40px;
+}
+
+.deck-view__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .decks__cards,
@@ -94,8 +104,7 @@
 }
 
 .decks__new-deck-btn,
-.deck-view__new-card-btn,
-.deck-view__practice-btn {
+.deck-view__new-card-btn {
   width: 100%;
   max-width: 325px;
   height: 205px;
@@ -109,7 +118,6 @@
   font-size: 24px;
   font-weight: 700;
   line-height: 1.2;
-  text-decoration: none;
   text-align: left;
   display: flex;
   align-items: flex-start;
@@ -126,13 +134,22 @@
   color: #1a1a1a;
 }
 
-.deck-view {
-  display: none;
-}
-
 .deck-view__practice-btn {
+  width: 160px;
+  height: 52px;
+  border-radius: 12px;
   background-color: #1a1a1a;
   color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:
+    0px 2px 8px 0px #0000001a,
+    -1px 2px 2px 0px #ffffffb2 inset,
+    1px -1px 2px 0px #00000040 inset;
 }
 
 .deck,
@@ -384,7 +401,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 200px;
+    height: 190px;
     background: linear-gradient(
       180deg,
       rgba(236, 236, 236, 0) 0%,
@@ -418,6 +435,10 @@
     margin-bottom: 24px;
   }
 
+  .deck-view__header {
+    display: block;
+  }
+
   .decks__cards,
   .deck-view__cards {
     justify-content: center;
@@ -433,8 +454,12 @@
   .decks__new-deck-btn,
   .deck-view__new-card-btn,
   .deck-view__practice-btn {
-    height: 64px;
+    position: fixed;
+    bottom: 76px;
+    height: 56px;
     max-width: none;
+    border-radius: 16px;
+    padding: 0;
     font-size: 18px;
     font-weight: 700;
     justify-content: center;
@@ -443,24 +468,18 @@
   }
 
   .decks__new-deck-btn {
-    position: fixed;
     left: 20px;
     right: 20px;
-    bottom: 76px;
     width: auto;
   }
 
   .deck-view__new-card-btn {
-    position: fixed;
     left: 20px;
-    bottom: 76px;
     width: calc(50% - 30px);
   }
 
   .deck-view__practice-btn {
-    position: fixed;
     right: 20px;
-    bottom: 76px;
     width: calc(50% - 30px);
   }
 
@@ -481,6 +500,7 @@
       "left flip right";
     grid-template-columns: 44px 44px 44px;
     justify-content: center;
+    justify-items: center;
     gap: 24px 40px;
   }
 
@@ -488,14 +508,6 @@
     width: min(440px, calc(100vw - 40px));
     height: auto;
     aspect-ratio: 440 / 300;
-  }
-
-  .carousel__btn_type_left {
-    justify-self: end;
-  }
-
-  .carousel__btn_type_right {
-    justify-self: start;
   }
 
   .carousel__card-text {
