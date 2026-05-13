@@ -71,6 +71,122 @@
         </div>
       </section>
 
+      <section class="new-deck-view" id="new-deck-view">
+        <h2 class="new-deck-view__title">New Deck</h2>
+
+        <form class="new-deck-view__form" id="new-deck-form">
+          <fieldset class="new-deck-view__fieldset">
+            <legend class="new-deck-view__legend">Choose a deck color</legend>
+
+            <ul class="new-deck-view__color-list">
+              <li class="new-deck-view__color-item">
+                <input
+                  class="new-deck-view__radio"
+                  type="radio"
+                  id="green"
+                  name="deck-color"
+                  value="#64d583"
+                  aria-label="green"
+                  checked
+                />
+                <label
+                  class="new-deck-view__color-label new-deck-view__color-label_color_green"
+                  for="green"
+                ></label>
+              </li>
+
+              <li class="new-deck-view__color-item">
+                <input
+                  class="new-deck-view__radio"
+                  type="radio"
+                  id="blue"
+                  name="deck-color"
+                  value="#91a8f9"
+                  aria-label="blue"
+                />
+                <label
+                  class="new-deck-view__color-label new-deck-view__color-label_color_blue"
+                  for="blue"
+                ></label>
+              </li>
+
+              <li class="new-deck-view__color-item">
+                <input
+                  class="new-deck-view__radio"
+                  type="radio"
+                  id="pink"
+                  name="deck-color"
+                  value="#ee92d7"
+                  aria-label="pink"
+                />
+                <label
+                  class="new-deck-view__color-label new-deck-view__color-label_color_pink"
+                  for="pink"
+                ></label>
+              </li>
+
+              <li class="new-deck-view__color-item">
+                <input
+                  class="new-deck-view__radio"
+                  type="radio"
+                  id="purple"
+                  name="deck-color"
+                  value="#aa8ef0"
+                  aria-label="purple"
+                />
+                <label
+                  class="new-deck-view__color-label new-deck-view__color-label_color_purple"
+                  for="purple"
+                ></label>
+              </li>
+
+              <li class="new-deck-view__color-item">
+                <input
+                  class="new-deck-view__radio"
+                  type="radio"
+                  id="orange"
+                  name="deck-color"
+                  value="#ee955e"
+                  aria-label="orange"
+                />
+                <label
+                  class="new-deck-view__color-label new-deck-view__color-label_color_orange"
+                  for="orange"
+                ></label>
+              </li>
+
+              <li class="new-deck-view__color-item">
+                <input
+                  class="new-deck-view__radio"
+                  type="radio"
+                  id="yellow"
+                  name="deck-color"
+                  value="#f5d770"
+                  aria-label="yellow"
+                />
+                <label
+                  class="new-deck-view__color-label new-deck-view__color-label_color_yellow"
+                  for="yellow"
+                ></label>
+              </li>
+            </ul>
+          </fieldset>
+
+          <label class="new-deck-view__label" for="deck-json">
+            Deck JSON
+            <textarea
+              class="new-deck-view__textarea"
+              id="deck-json"
+              name="deck-json"
+            ></textarea>
+          </label>
+
+          <button class="new-deck-view__submit-btn" type="submit" disabled>
+            Create Deck
+          </button>
+        </form>
+      </section>
+
       <section class="not-found" id="not-found">
         <h2 class="not-found__title">404 Not Found</h2>
         <p class="not-found__text">Page not found.</p>

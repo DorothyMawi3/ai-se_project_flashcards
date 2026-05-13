@@ -7,10 +7,12 @@ const page = document.querySelector(".page");
 const pageMainContent = document.querySelector(".page__main-content");
 const decksSection = document.querySelector(".decks");
 const deckViewSection = document.querySelector(".deck-view");
+const newDeckViewSection = document.querySelector(".new-deck-view");
 const decksList = document.querySelector(".decks__list");
 const deckTemplate = document.querySelector("#deck-template");
 const notFoundSection = document.querySelector(".not-found");
 const carouselSection = document.querySelector(".carousel");
+const newDeckBtn = document.querySelector("#home .decks__new-deck-btn");
 
 function createDeckEl(deckData) {
   const deckEl = deckTemplate.content.querySelector(".deck").cloneNode(true);
@@ -45,21 +47,25 @@ function renderDecks() {
   decks.forEach(renderDeckEl);
 }
 
-function showHomeView() {
-  decksSection.style.display = "flex";
+function hideAllViews() {
+  decksSection.style.display = "none";
   deckViewSection.style.display = "none";
+  newDeckViewSection.style.display = "none";
   notFoundSection.style.display = "none";
   carouselSection.style.display = "none";
+}
+
+function showHomeView() {
+  hideAllViews();
+  decksSection.style.display = "flex";
 
   page.classList.remove("page_no-mobile-bar");
   pageMainContent.classList.remove("page__main-content_type_carousel");
 }
 
 function showDeckView(deck) {
-  decksSection.style.display = "none";
+  hideAllViews();
   deckViewSection.style.display = "flex";
-  notFoundSection.style.display = "none";
-  carouselSection.style.display = "none";
 
   page.classList.remove("page_no-mobile-bar");
   pageMainContent.classList.remove("page__main-content_type_carousel");
@@ -67,10 +73,16 @@ function showDeckView(deck) {
   renderDeckView(deck);
 }
 
+function showNewDeckView() {
+  hideAllViews();
+  newDeckViewSection.style.display = "flex";
+
+  page.classList.remove("page_no-mobile-bar");
+  pageMainContent.classList.remove("page__main-content_type_carousel");
+}
+
 function showCarouselView(deck) {
-  decksSection.style.display = "none";
-  deckViewSection.style.display = "none";
-  notFoundSection.style.display = "none";
+  hideAllViews();
 
   page.classList.add("page_no-mobile-bar");
   pageMainContent.classList.add("page__main-content_type_carousel");
@@ -79,10 +91,8 @@ function showCarouselView(deck) {
 }
 
 function showNotFoundView() {
-  decksSection.style.display = "none";
-  deckViewSection.style.display = "none";
+  hideAllViews();
   notFoundSection.style.display = "block";
-  carouselSection.style.display = "none";
 
   page.classList.add("page_no-mobile-bar");
   pageMainContent.classList.remove("page__main-content_type_carousel");
@@ -93,6 +103,11 @@ function handleRoute() {
 
   if (hash === "" || hash === "home" || hash === "about") {
     showHomeView();
+    return;
+  }
+
+  if (hash === "new-deck" || hash === "new-deck-view") {
+    showNewDeckView();
     return;
   }
 
@@ -124,6 +139,10 @@ function handleRoute() {
 
   showNotFoundView();
 }
+
+newDeckBtn.addEventListener("click", () => {
+  window.location.hash = "new-deck";
+});
 
 renderDecks();
 handleRoute();
