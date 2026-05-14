@@ -6,6 +6,10 @@ const newDeckForm = document.querySelector("#new-deck-form");
 const submitBtn = newDeckForm.querySelector(".new-deck-view__submit-btn");
 const textarea = newDeckForm.querySelector(".new-deck-view__textarea");
 
+const errorModal = document.querySelector("#error-modal");
+const errorModalCloseBtn = errorModal.querySelector(".modal__close-btn");
+const errorMessageEl = errorModal.querySelector(".modal__error");
+
 function slugify(str) {
   return str
     .toLowerCase()
@@ -24,9 +28,37 @@ function normalizeColor(color) {
   return "#" + hex.toLowerCase();
 }
 
+function validateName(name) {
+  if (typeof name !== "string" || name.length < 2 || name.length > 80) {
+    return null;
+  }
+
+  return name;
+}
+
+function parseJSON(jsonString) {
+  try {
+    return JSON.parse(jsonString);
+  } catch (error) {
+    return null;
+  }
+}
+
+function showError(message) {
+  errorMessageEl.textContent = message;
+  errorModal.classList.add("modal_visible");
+}
+
+function closeErrorModal() {
+  errorModal.classList.remove("modal_visible");
+  errorMessageEl.textContent = "";
+}
+
 export function disableSubmitBtn() {
   submitBtn.disabled = false;
 }
+
+errorModalCloseBtn.addEventListener("click", closeErrorModal);
 
 newDeckForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
@@ -34,24 +66,44 @@ newDeckForm.addEventListener("submit", (evt) => {
   const formData = new FormData(evt.target);
   const values = Object.fromEntries(formData);
 
-  let jsonData;
+  const jsonData = parseJSON(values["deck-json"]);
 
-  try {
-    jsonData = JSON.parse(values["deck-json"]);
-  } catch (error) {
-    console.error("Invalid JSON:", error);
+  if (!jsonData) {
+    showError("Please enter valid JSON.");
     return;
   }
 
-  const deckName = jsonData.name || jsonData.title;
+  const deckName = validateName(jsonData.name || jsonData.title);
+
+  if (!deckName) {
+    showError("The deck must have a name between 2 and 80 characters.");
+    return;
+  }
+
+  if (!Array.isArray(jsonData.cards)) {
+    showError("The deck must include a cards field, and cards must be an array.");
+    return;
+  }
+
+  const colorValue = normalizeColor(values["deck-color"]);
+
+  if (
+    typeof jsonData.color === "string" &&
+    jsonData.color.toLowerCase() !== colorValue
+  ) {
+    showError(
+      "The color in the JSON does not match the selected color. Please choose the same color or remove the color field from the JSON."
+    );
+    return;
+  }
+
   const id = `${slugify(deckName)}-${Date.now()}`;
-  const color = normalizeColor(values["deck-color"]);
 
   const deck = {
     id,
     title: deckName,
     name: deckName,
-    color,
+    color: colorValue,
     cards: jsonData.cards,
   };
 
