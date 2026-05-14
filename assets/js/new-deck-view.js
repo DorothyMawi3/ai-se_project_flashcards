@@ -7,8 +7,8 @@ const submitBtn = newDeckForm.querySelector(".new-deck-view__submit-btn");
 const textarea = newDeckForm.querySelector(".new-deck-view__textarea");
 
 const errorModal = document.querySelector("#error-modal");
-const errorModalCloseBtn = errorModal.querySelector(".modal__close-btn");
-const errorMessageEl = errorModal.querySelector(".modal__error");
+const closeBtn = errorModal.querySelector(".modal__close-btn");
+const errorMessage = errorModal.querySelector(".modal__error");
 
 function slugify(str) {
   return str
@@ -28,14 +28,6 @@ function normalizeColor(color) {
   return "#" + hex.toLowerCase();
 }
 
-function validateName(name) {
-  if (typeof name !== "string" || name.length < 2 || name.length > 80) {
-    return null;
-  }
-
-  return name;
-}
-
 function parseJSON(jsonString) {
   try {
     return JSON.parse(jsonString);
@@ -44,21 +36,33 @@ function parseJSON(jsonString) {
   }
 }
 
+function validateName(name) {
+  if (typeof name !== "string" || name.length < 2 || name.length > 80) {
+    return null;
+  }
+
+  return name;
+}
+
 function showError(message) {
-  errorMessageEl.textContent = message;
+  errorMessage.textContent = message;
   errorModal.classList.add("modal_visible");
 }
 
 function closeErrorModal() {
   errorModal.classList.remove("modal_visible");
-  errorMessageEl.textContent = "";
+  errorMessage.textContent = "";
 }
 
 export function disableSubmitBtn() {
   submitBtn.disabled = false;
 }
 
-errorModalCloseBtn.addEventListener("click", closeErrorModal);
+closeBtn.addEventListener("click", closeErrorModal);
+
+textarea.addEventListener("input", () => {
+  submitBtn.disabled = textarea.value.trim() === "";
+});
 
 newDeckForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
