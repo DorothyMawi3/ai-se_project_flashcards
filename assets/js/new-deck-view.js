@@ -8,7 +8,7 @@ const textarea = newDeckForm.querySelector(".new-deck-view__textarea");
 
 const errorModal = document.querySelector("#error-modal");
 const closeBtn = errorModal.querySelector(".modal__close-btn");
-const errorMessage = errorModal.querySelector(".modal__error");
+const errorMessageEl = errorModal.querySelector(".modal__error");
 
 function slugify(str) {
   return str
@@ -45,13 +45,13 @@ function validateName(name) {
 }
 
 function showError(message) {
-  errorMessage.textContent = message;
+  errorMessageEl.textContent = message;
   errorModal.classList.add("modal_visible");
 }
 
 function closeErrorModal() {
   errorModal.classList.remove("modal_visible");
-  errorMessage.textContent = "";
+  errorMessageEl.textContent = "";
 }
 
 export function disableSubmitBtn() {
@@ -96,7 +96,7 @@ newDeckForm.addEventListener("submit", (evt) => {
     jsonData.color.toLowerCase() !== colorValue
   ) {
     showError(
-      "The color in the JSON does not match the selected color. Please choose the same color or remove the color field from the JSON."
+      "The color in the JSON does not match the selected color."
     );
     return;
   }
