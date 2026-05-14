@@ -2,6 +2,7 @@ import { decks, getDeckByID } from "./decks.js";
 import { hexToString } from "./colorMap.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deckView.js";
+import { disableSubmitBtn } from "./new-deck-view.js";
 
 const page = document.querySelector(".page");
 const pageMainContent = document.querySelector(".page__main-content");
@@ -14,6 +15,10 @@ const notFoundSection = document.querySelector(".not-found");
 const carouselSection = document.querySelector(".carousel");
 const newDeckBtn = document.querySelector("#home .decks__new-deck-btn");
 
+function getDeckTitle(deckData) {
+  return deckData.title || deckData.name;
+}
+
 function createDeckEl(deckData) {
   const deckEl = deckTemplate.content.querySelector(".deck").cloneNode(true);
 
@@ -22,7 +27,7 @@ function createDeckEl(deckData) {
   const deckDeleteBtn = deckEl.querySelector(".deck__delete-btn");
   const deckLink = deckEl.querySelector(".deck__link");
 
-  deckTitle.textContent = deckData.title;
+  deckTitle.textContent = getDeckTitle(deckData);
   deckCount.textContent = `${deckData.cards.length} cards`;
 
   const color = hexToString(deckData.color);
@@ -79,6 +84,8 @@ function showNewDeckView() {
 
   page.classList.remove("page_no-mobile-bar");
   pageMainContent.classList.remove("page__main-content_type_carousel");
+
+  disableSubmitBtn();
 }
 
 function showCarouselView(deck) {
@@ -100,6 +107,8 @@ function showNotFoundView() {
 
 function handleRoute() {
   const hash = window.location.hash.slice(1);
+
+  renderDecks();
 
   if (hash === "" || hash === "home" || hash === "about") {
     showHomeView();
@@ -141,7 +150,7 @@ function handleRoute() {
 }
 
 newDeckBtn.addEventListener("click", () => {
-  window.location.hash = "new-deck";
+  window.location.hash = "new-deck-view";
 });
 
 renderDecks();
