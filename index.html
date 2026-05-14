@@ -3,17 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Flash Cards</title>
-
     <meta name="author" content="Dorothy Mawi" />
     <meta
       name="description"
       content="A flashcard study app that helps users study decks and cards."
     />
-
     <link rel="icon" href="./favicon.ico" />
-
     <link rel="stylesheet" href="./assets/css/index.css" />
   </head>
 
@@ -25,216 +21,104 @@
 
       <nav class="nav">
         <ul class="nav__links">
-          <li>
-            <a class="nav__link" href="#home">My Decks</a>
-          </li>
-
-          <li>
-            <a class="nav__link" href="#about">About</a>
-          </li>
+          <li><a class="nav__link" href="#home">My Decks</a></li>
+          <li><a class="nav__link" href="#about">About</a></li>
         </ul>
       </nav>
     </header>
 
     <main class="page__main-content">
-      <!-- HOME VIEW -->
-
       <section class="decks" id="home">
         <h2 class="decks__title">My Decks</h2>
 
         <div class="decks__cards">
           <ul class="decks__list"></ul>
-
-          <button class="decks__new-deck-btn" type="button">
-            + New Deck
-          </button>
+          <button class="decks__new-deck-btn" type="button">+ New Deck</button>
         </div>
       </section>
-
-      <!-- DECK VIEW -->
 
       <section class="deck-view" id="deck-view">
         <div class="deck-view__header">
           <h2 class="deck-view__title"></h2>
-
           <a class="deck-view__practice-btn" href="#">Practice</a>
         </div>
 
         <div class="deck-view__cards">
           <ul class="deck-view__list"></ul>
-
           <button class="deck-view__new-card-btn" type="button">
             + New Card
           </button>
         </div>
       </section>
 
-      <!-- NEW DECK VIEW -->
-
       <section class="new-deck-view" id="new-deck-view">
         <h2 class="new-deck-view__title">New Deck</h2>
 
         <form class="new-deck-view__form" id="new-deck-form">
           <fieldset class="new-deck-view__fieldset">
-            <legend class="new-deck-view__legend">
-              Choose a deck color
-            </legend>
+            <legend class="new-deck-view__legend">Choose a deck color</legend>
 
             <ul class="new-deck-view__color-list">
               <li class="new-deck-view__color-item">
-                <input
-                  class="new-deck-view__radio"
-                  type="radio"
-                  id="green"
-                  name="deck-color"
-                  value="#64d583"
-                  aria-label="green"
-                  checked
-                />
-
-                <label
-                  class="new-deck-view__color-label new-deck-view__color-label_color_green"
-                  for="green"
-                ></label>
+                <input class="new-deck-view__radio" type="radio" id="green" name="deck-color" value="#64d583" aria-label="green" checked />
+                <label class="new-deck-view__color-label new-deck-view__color-label_color_green" for="green"></label>
               </li>
 
               <li class="new-deck-view__color-item">
-                <input
-                  class="new-deck-view__radio"
-                  type="radio"
-                  id="blue"
-                  name="deck-color"
-                  value="#91a8f9"
-                  aria-label="blue"
-                />
-
-                <label
-                  class="new-deck-view__color-label new-deck-view__color-label_color_blue"
-                  for="blue"
-                ></label>
+                <input class="new-deck-view__radio" type="radio" id="blue" name="deck-color" value="#91a8f9" aria-label="blue" />
+                <label class="new-deck-view__color-label new-deck-view__color-label_color_blue" for="blue"></label>
               </li>
 
               <li class="new-deck-view__color-item">
-                <input
-                  class="new-deck-view__radio"
-                  type="radio"
-                  id="pink"
-                  name="deck-color"
-                  value="#ee92d7"
-                  aria-label="pink"
-                />
-
-                <label
-                  class="new-deck-view__color-label new-deck-view__color-label_color_pink"
-                  for="pink"
-                ></label>
+                <input class="new-deck-view__radio" type="radio" id="pink" name="deck-color" value="#ee92d7" aria-label="pink" />
+                <label class="new-deck-view__color-label new-deck-view__color-label_color_pink" for="pink"></label>
               </li>
 
               <li class="new-deck-view__color-item">
-                <input
-                  class="new-deck-view__radio"
-                  type="radio"
-                  id="purple"
-                  name="deck-color"
-                  value="#aa8ef0"
-                  aria-label="purple"
-                />
-
-                <label
-                  class="new-deck-view__color-label new-deck-view__color-label_color_purple"
-                  for="purple"
-                ></label>
+                <input class="new-deck-view__radio" type="radio" id="purple" name="deck-color" value="#aa8ef0" aria-label="purple" />
+                <label class="new-deck-view__color-label new-deck-view__color-label_color_purple" for="purple"></label>
               </li>
 
               <li class="new-deck-view__color-item">
-                <input
-                  class="new-deck-view__radio"
-                  type="radio"
-                  id="orange"
-                  name="deck-color"
-                  value="#ee955e"
-                  aria-label="orange"
-                />
-
-                <label
-                  class="new-deck-view__color-label new-deck-view__color-label_color_orange"
-                  for="orange"
-                ></label>
+                <input class="new-deck-view__radio" type="radio" id="orange" name="deck-color" value="#ee955e" aria-label="orange" />
+                <label class="new-deck-view__color-label new-deck-view__color-label_color_orange" for="orange"></label>
               </li>
 
               <li class="new-deck-view__color-item">
-                <input
-                  class="new-deck-view__radio"
-                  type="radio"
-                  id="yellow"
-                  name="deck-color"
-                  value="#f5d770"
-                  aria-label="yellow"
-                />
-
-                <label
-                  class="new-deck-view__color-label new-deck-view__color-label_color_yellow"
-                  for="yellow"
-                ></label>
+                <input class="new-deck-view__radio" type="radio" id="yellow" name="deck-color" value="#f5d770" aria-label="yellow" />
+                <label class="new-deck-view__color-label new-deck-view__color-label_color_yellow" for="yellow"></label>
               </li>
             </ul>
           </fieldset>
 
           <label class="new-deck-view__label" for="deck-json">
             Deck JSON
-
-            <textarea
-              class="new-deck-view__textarea"
-              id="deck-json"
-              name="deck-json"
-            ></textarea>
+            <textarea class="new-deck-view__textarea" id="deck-json" name="deck-json"></textarea>
           </label>
 
-          <button
-            class="new-deck-view__submit-btn"
-            type="submit"
-            disabled
-          >
+          <button class="new-deck-view__submit-btn" type="submit" disabled>
             Create Deck
           </button>
         </form>
       </section>
 
-      <!-- NOT FOUND -->
-
       <section class="not-found" id="not-found">
         <h2 class="not-found__title">404 Not Found</h2>
-
         <p class="not-found__text">Page not found.</p>
       </section>
-
-      <!-- CAROUSEL -->
 
       <section class="carousel" id="carousel">
         <h2 class="carousel__title"></h2>
 
         <div class="carousel__grid">
-          <button
-            class="carousel__btn carousel__btn_type_left"
-            type="button"
-            aria-label="Previous card"
-          ></button>
+          <button class="carousel__btn carousel__btn_type_left" type="button" aria-label="Previous card"></button>
 
           <div class="carousel__card">
             <p class="carousel__card-text"></p>
           </div>
 
-          <button
-            class="carousel__btn carousel__btn_type_right"
-            type="button"
-            aria-label="Next card"
-          ></button>
-
-          <button
-            class="carousel__btn carousel__btn_type_flip"
-            type="button"
-            aria-label="Flip card"
-          ></button>
+          <button class="carousel__btn carousel__btn_type_right" type="button" aria-label="Next card"></button>
+          <button class="carousel__btn carousel__btn_type_flip" type="button" aria-label="Flip card"></button>
         </div>
       </section>
     </main>
@@ -243,58 +127,33 @@
       <p class="footer__text">© 2026 Dorothy Mawi</p>
     </footer>
 
-    <!-- ERROR MODAL -->
-
     <div class="modal" id="error-modal">
       <div class="modal__content">
         <h2 class="modal__title">Something went wrong</h2>
-
         <p class="modal__error"></p>
-
-        <button class="modal__close-btn" type="button">
-          Dismiss
-        </button>
+        <button class="modal__close-btn" type="button">Dismiss</button>
       </div>
     </div>
-
-    <!-- DECK TEMPLATE -->
 
     <template id="deck-template">
       <li class="deck">
         <a class="deck__link" href="#"></a>
-
         <h3 class="deck__title"></h3>
 
         <div class="deck__row">
           <p class="deck__count"></p>
-
-          <button
-            class="deck__delete-btn"
-            type="button"
-            aria-label="Delete deck"
-          ></button>
+          <button class="deck__delete-btn" type="button" aria-label="Delete deck"></button>
         </div>
       </li>
     </template>
-
-    <!-- CARD TEMPLATE -->
 
     <template id="card-template">
       <li class="card">
         <p class="card__text"></p>
 
         <div class="card__buttons">
-          <button
-            class="card__flip-btn"
-            type="button"
-            aria-label="Flip card"
-          ></button>
-
-          <button
-            class="card__delete-btn"
-            type="button"
-            aria-label="Delete card"
-          ></button>
+          <button class="card__flip-btn" type="button" aria-label="Flip card"></button>
+          <button class="card__delete-btn" type="button" aria-label="Delete card"></button>
         </div>
       </li>
     </template>
